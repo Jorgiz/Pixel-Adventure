@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://jq2jsd8ggp4y"]
+
+[ext_resource type="Script" path="res://Main Characters/player.gd" id="1_3dy1y"]
+[ext_resource type="SpriteFrames" uid="uid://c2r817n31o7ee" path="res://Main Characters/Virtual Guy/virtual_guy.tres" id="1_orrlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf2ww"]
+size = Vector2(20, 26)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_3dy1y")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+frames = ExtResource("1_orrlx")
+animation = &"Idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_nf2ww")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

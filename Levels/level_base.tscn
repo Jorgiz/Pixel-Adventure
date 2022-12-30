@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://36lrghnfuh06"]
+
+[ext_resource type="Script" path="res://Levels/levels.gd" id="1_weav4"]
+[ext_resource type="TileSet" uid="uid://2iccpj7018ab" path="res://Terrain/terrain.tres" id="2_k6lgv"]
+[ext_resource type="PackedScene" uid="uid://dl4i10kek1iq4" path="res://Items/Checkpoints/End/next_level.tscn" id="3_l6xsp"]
+[ext_resource type="PackedScene" uid="uid://jq2jsd8ggp4y" path="res://Main Characters/player.tscn" id="4_idkvf"]
+
+[node name="Level_Base" type="Node2D"]
+script = ExtResource("1_weav4")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_k6lgv")
+format = 2
+layer_0/name = "Background"
+layer_1/name = "Grass"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(262143, 458753, 1, 196608, 458753, 1, 262144, 458753, 2, 327679, 458753, 2, 327678, 393217, 2, 262142, 393217, 1, 196606, 393217, 0, 196607, 458753, 0, 131072, 458753, 0, 196609, 524289, 1, 262145, 524289, 2, 131073, 524289, 0)
+
+[node name="NextLevel" parent="." instance=ExtResource("3_l6xsp")]
+
+[node name="Player" parent="." instance=ExtResource("4_idkvf")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+editor_draw_limits = true
+
+[connection signal="change_scene" from="NextLevel" to="." method="_on_next_level_change_scene"]

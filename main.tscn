@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b48at344qttyb"]
+
+[ext_resource type="TileSet" uid="uid://2iccpj7018ab" path="res://Terrain/terrain.tres" id="1_mh5r5"]
+[ext_resource type="PackedScene" uid="uid://jq2jsd8ggp4y" path="res://Main Characters/player.tscn" id="2_jlk10"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_mh5r5")
+format = 2
+
+[node name="Player" parent="." instance=ExtResource("2_jlk10")]
+position = Vector2(164, 204)
+collision_mask = 6
