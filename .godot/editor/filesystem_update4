@@ -1,4 +1,3 @@
-res://Levels/level_1.tscn
+res://node_2d.tscn
 res://Terrain/terrain.tres
 res://Main Characters/Pink Man/pink_man.tres
-res://Main Characters/player.gd
