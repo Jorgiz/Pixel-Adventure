@@ -1,7 +1,10 @@
-res://node_2d.tscn
 res://Terrain/terrain.tres
 res://Main Characters/Pink Man/pink_man.tres
-res://Levels/level_base.tscn
-res://Levels/level_3.tscn
-res://Levels/level_2.tscn
+res://Enemies/Mushroom/mushroom.tscn
+res://Enemies/Mushroom/mushroom.gd
 res://Levels/level_1.tscn
+res://node_2d.tscn
+res://Levels/level_2.tscn
+res://Levels/level_3.tscn
+res://Levels/level_base.tscn
+res://main.tscn

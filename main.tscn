@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://b48at344qttyb"]
+[gd_scene load_steps=4 format=3 uid="uid://b48at344qttyb"]
+
+[ext_resource type="PackedScene" uid="uid://drmu0lsjfh6na" path="res://Enemies/Mushroom/mushroom.tscn" id="1_5505y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utgxj"]
+size = Vector2(176, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psu4y"]
+size = Vector2(16, 64)
 
 [node name="Main" type="Node2D"]
+
+[node name="Mushroom" parent="." instance=ExtResource("1_5505y")]
+position = Vector2(242, 200)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(244, 239)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_utgxj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(96, -48)
+shape = SubResource("RectangleShape2D_psu4y")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-96, -48)
+shape = SubResource("RectangleShape2D_psu4y")
