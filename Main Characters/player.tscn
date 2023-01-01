@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jq2jsd8ggp4y"]
 
 [ext_resource type="Script" path="res://Main Characters/player.gd" id="1_3dy1y"]
-[ext_resource type="SpriteFrames" uid="uid://c2r817n31o7ee" path="res://Main Characters/Virtual Guy/virtual_guy.tres" id="1_orrlx"]
+[ext_resource type="SpriteFrames" uid="uid://d3n4litxggqok" path="res://Main Characters/Pink Man/pink_man.tres" id="2_4hxx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf2ww"]
 size = Vector2(20, 26)
@@ -12,7 +12,7 @@ script = ExtResource("1_3dy1y")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = ExtResource("1_orrlx")
+frames = ExtResource("2_4hxx1")
 animation = &"Idle"
 playing = true
 
