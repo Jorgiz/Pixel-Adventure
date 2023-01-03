@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://jq2jsd8ggp4y"]
+[gd_scene load_steps=6 format=3 uid="uid://jq2jsd8ggp4y"]
 
 [ext_resource type="Script" path="res://Main Characters/player.gd" id="1_3dy1y"]
 [ext_resource type="SpriteFrames" uid="uid://d3n4litxggqok" path="res://Main Characters/Pink Man/pink_man.tres" id="2_4hxx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf2ww"]
 size = Vector2(20, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgk7b"]
+size = Vector2(4, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do5h4"]
+size = Vector2(16, 4)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -20,4 +26,31 @@ playing = true
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_nf2ww")
 
+[node name="LeftHurtBox" type="Area2D" parent="." groups=["hurtbox"]]
+position = Vector2(-8, 3)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftHurtBox"]
+shape = SubResource("RectangleShape2D_lgk7b")
+debug_color = Color(0.978959, 0, 0.391966, 0.42)
+
+[node name="RightHurtBox" type="Area2D" parent="." groups=["hurtbox"]]
+position = Vector2(8, 3)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightHurtBox"]
+shape = SubResource("RectangleShape2D_lgk7b")
+debug_color = Color(0.978959, 0, 0.391966, 0.42)
+
+[node name="HitBox" type="Area2D" parent="." groups=["hitbox"]]
+position = Vector2(0, 14)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_do5h4")
+debug_color = Color(0.670588, 0.509804, 0, 0.419608)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="LeftHurtBox" to="." method="_on_left_hurt_box_area_entered"]
+[connection signal="area_entered" from="RightHurtBox" to="." method="_on_right_hurt_box_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

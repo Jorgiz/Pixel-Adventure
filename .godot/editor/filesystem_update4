@@ -1,10 +1,15 @@
+res://Levels/level_1.tscn
 res://Terrain/terrain.tres
 res://Main Characters/Pink Man/pink_man.tres
-res://Enemies/Mushroom/mushroom.tscn
-res://Enemies/Mushroom/mushroom.gd
-res://Levels/level_1.tscn
 res://node_2d.tscn
 res://Levels/level_2.tscn
 res://Levels/level_3.tscn
 res://Levels/level_base.tscn
+res://Enemies/Mushroom/mushroom.tscn
 res://main.tscn
+res://Main Characters/player.tscn
+res://Enemies/Mushroom/mushroom.gd
+res://Main Characters/player.gd
+res://Items/Checkpoints/End/next_level.gd
+res://main.gd
+res://Items/Checkpoints/End/next_level.tscn

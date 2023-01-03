@@ -9,6 +9,9 @@ const JUMP_VELOCITY := -220.0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var air_jumps_left := air_jumps
 
+var life := 3
+var hitted := false
+
 
 func _ready() -> void:
 	set_physics_process(false)
@@ -23,6 +26,7 @@ func _physics_process(delta: float) -> void:
 func _move(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		
 		if is_on_wall() and velocity.y > 0:
 			velocity.y = 30
 			
@@ -64,8 +68,11 @@ func _animate() -> void:
 	var is_double_jumping = velocity.y < 0 and air_jumps_left != air_jumps
 	var is_falling = velocity.y > 0 and not is_on_wall()
 	var is_wall_jumping = is_on_wall()
-
-	if is_idle:
+	
+	if hitted:
+		$AnimatedSprite2D.play("Hit")
+	
+	elif is_idle:
 		$AnimatedSprite2D.play("Idle")
 
 	elif is_running:
@@ -84,7 +91,38 @@ func _animate() -> void:
 		$AnimatedSprite2D.play("Wall Jump")
 
 
+func _hitted(side: int) -> void:
+	if life != 0:
+		hitted = true
+		velocity = Vector2(JUMP_VELOCITY * side, JUMP_VELOCITY)
+		life -= 1
+		
+	else:
+		set_physics_process(false)
+		$AnimatedSprite2D.play("Desappearing")
+
+
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if $AnimatedSprite2D.animation == "Appearing":
-		$AnimatedSprite2D.play("Idle")
-		set_physics_process(true)
+	match $AnimatedSprite2D.animation:
+		"Appearing":
+			$AnimatedSprite2D.play("Idle")
+			set_physics_process(true)
+		"Hit":
+			hitted = false
+		"Desappearing":
+			get_tree().reload_current_scene()
+
+
+func _on_left_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hitbox"):
+		_hitted(-1)
+
+
+func _on_right_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hitbox"):
+		_hitted(1)
+
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hurtbox"):
+		velocity.y = JUMP_VELOCITY

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://con3pgpyaevg7"]
+[gd_scene load_steps=6 format=3 uid="uid://con3pgpyaevg7"]
 
 [ext_resource type="TileSet" uid="uid://2iccpj7018ab" path="res://Terrain/terrain.tres" id="1_8bd51"]
 [ext_resource type="Script" path="res://Levels/levels.gd" id="1_fxdxd"]
 [ext_resource type="PackedScene" uid="uid://jq2jsd8ggp4y" path="res://Main Characters/player.tscn" id="2_ljq8q"]
 [ext_resource type="PackedScene" uid="uid://dl4i10kek1iq4" path="res://Items/Checkpoints/End/next_level.tscn" id="3_lrjob"]
+[ext_resource type="PackedScene" uid="uid://bfqjx2ysu8jlm" path="res://Enemies/Mushroom/mushroom.tscn" id="5_2f6wj"]
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_fxdxd")
@@ -23,6 +24,18 @@ layer_1/tile_data = PackedInt32Array(983069, 458753, 1, 983068, 458753, 1, 98306
 
 [node name="NextLevel" parent="." instance=ExtResource("3_lrjob")]
 position = Vector2(576, 192)
+
+[node name="Enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Mushroom3" parent="Enemies" instance=ExtResource("5_2f6wj")]
+position = Vector2(848, 280)
+
+[node name="Mushroom" parent="Enemies" instance=ExtResource("5_2f6wj")]
+position = Vector2(392, 200)
+
+[node name="Mushroom2" parent="Enemies" instance=ExtResource("5_2f6wj")]
+position = Vector2(112, 200)
 
 [node name="Player" parent="." instance=ExtResource("2_ljq8q")]
 position = Vector2(16, 184)

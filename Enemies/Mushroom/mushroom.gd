@@ -1,41 +1,70 @@
 extends CharacterBody2D
 
-@export var speed := 70.0
+@export var speed := 100
+@onready var animation = $AnimatedSprite2D
+@onready var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var gravity:int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var side: int
+var life := randi() % 5 + 1
+var hitted := false
 
 
 func _ready() -> void:
-	randomize()
-	# Choose a random side
-	match randi() % 2:
-		0: # Left
-			side = -1
-		1:  # Right
-			side = 1
-			$AnimatedSprite2D.flip_h = true
-	
-	$AnimatedSprite2D.play("Run")
+	side = pick_random_side()
+	velocity.x = speed * side
+	animation.play("Run")
 
 
 func _physics_process(delta: float) -> void:
-	# Add gravity
+	if not hitted:
+		_move(delta)
+
+
+func pick_random_side() -> int:
+	if randi() % 2 == 0:
+		return -1
+		
+	animation.scale.x = -1
+	return 1
+
+
+func _move(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
-	velocity.x = side * speed
+	if velocity.x == 0:
+		_flip()
 	
 	move_and_slide()
-	
-	if velocity.x == 0:
-		$AnimatedSprite2D.play("Idle")
-		set_physics_process(false)
+
+
+func _flip() -> void:
+	side *= -1
+	animation.play("Idle")
+
+
+func _hitted() -> void:
+	hitted = true
+	life -= 1
+	animation.play("Hit")
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if $AnimatedSprite2D.animation == "Idle":
-		set_physics_process(true)
-		side = -side
-		$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
-		$AnimatedSprite2D.play("Run")
+	match animation.animation:
+		"Idle":
+			velocity.x = side * speed
+			animation.scale.x = -side
+			animation.play("Run")
+			
+		"Hit":
+			if life != 0:
+				hitted = false
+				animation.play("Run")
+				return
+				
+			queue_free()
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hitbox"):
+		_hitted()

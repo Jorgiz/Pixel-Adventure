@@ -1,8 +1,8 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1672610311
+::res://::1672718534
 icon.svg::CompressedTexture2D::3732530260838215631::1672339058::1672339228::1::::<><>::
-main.tscn::PackedScene::4490057061957116149::1672449353::0::1::::<><>::
-node_2d.tscn::PackedScene::8025571528188990099::1672597926::0::1::::<><>::
+main.tscn::PackedScene::4490057061957116149::1672680916::0::1::::<><>::uid://drmu0lsjfh6na<>uid://jq2jsd8ggp4y
+node_2d.tscn::PackedScene::2784558121122449492::1672680791::0::1::::<><>::
 ::res://Background/::1672339253
 Blue.png::CompressedTexture2D::7091096817402645421::1566236978::1672339253::1::::<><>::
 Brown.png::CompressedTexture2D::3712954840197674710::1566236896::1672339253::1::::<><>::
@@ -65,8 +65,10 @@ Desappear (44x30).png::CompressedTexture2D::4491801763796525145::1567350170::167
 Gost Particles (48x16).png::CompressedTexture2D::2067541467665782944::1567377660::1672597300::1::::<><>::
 Hit (44x30).png::CompressedTexture2D::8787023312215611315::1567644214::1672597300::1::::<><>::
 Idle (44x30).png::CompressedTexture2D::6384883238246658363::1567350130::1672597300::1::::<><>::
-::res://Enemies/Mushroom/::1672610311
-::res://Enemies/Mushroom/Assets/::1672610311
+::res://Enemies/Mushroom/::1672680792
+mushroom.gd::GDScript::-1::1672678350::0::1::::<>CharacterBody2D<>::
+mushroom.tscn::PackedScene::8378504516656765662::1672680792::0::1::::<><>::uid://bfqmdlronwp1q<>res://Enemies/Mushroom/mushroom.gd<>uid://b2khf88ssgb2q<>uid://dsvxw2ckq7ihi
+::res://Enemies/Mushroom/Assets/::1672610312
 Hit.png::CompressedTexture2D::2771129511916009536::1566495684::1672610312::1::::<><>::
 Idle (32x32).png::CompressedTexture2D::4302598972470692986::1566495668::1672610312::1::::<><>::
 Run (32x32).png::CompressedTexture2D::8467450369395743318::1566495676::1672610312::1::::<><>::
@@ -149,9 +151,9 @@ Idle.png::CompressedTexture2D::7840766989265189410::1565989166::1672339253::1:::
 Checkpoint (Flag Idle)(64x64).png::CompressedTexture2D::8715081677778444310::1566492038::1672339253::1::::<><>::
 Checkpoint (Flag Out) (64x64).png::CompressedTexture2D::1907438493144916836::1566492032::1672339253::1::::<><>::
 Checkpoint (No Flag).png::CompressedTexture2D::1898364379418637160::1566084790::1672339253::1::::<><>::
-::res://Items/Checkpoints/End/::1672436789
+::res://Items/Checkpoints/End/::1672678837
 next_level.gd::GDScript::-1::1672436670::0::1::::<>Area2D<>::
-next_level.tscn::PackedScene::7991739781276986445::1672436789::0::1::::<><>::uid://dfii8ppnc7te2<>res://Items/Checkpoints/End/next_level.gd<>uid://btfxtcwbf326f
+next_level.tscn::PackedScene::7991739781276986445::1672678837::0::1::::<><>::uid://dfii8ppnc7te2<>res://Items/Checkpoints/End/next_level.gd<>uid://btfxtcwbf326f
 ::res://Items/Checkpoints/End/Assets/::1672431418
 End (Idle).png::CompressedTexture2D::7527266770059868015::1566138162::1672431418::1::::<><>::
 End (Pressed) (64x64).png::CompressedTexture2D::3731761161589484255::1566492046::1672431418::1::::<><>::
@@ -168,15 +170,15 @@ Melon.png::CompressedTexture2D::8474049369962901113::1566492166::1672339253::1::
 Orange.png::CompressedTexture2D::8923609911328585134::1566492138::1672339253::1::::<><>::
 Pineapple.png::CompressedTexture2D::6468089307982455292::1566492174::1672339253::1::::<><>::
 Strawberry.png::CompressedTexture2D::1031027656986654540::1566492120::1672339253::1::::<><>::
-::res://Levels/::1672598046
+::res://Levels/::1672680792
 levels.gd::GDScript::-1::1672436961::0::1::::<>Node2D<>::
-level_1.tscn::PackedScene::5784049291230266016::1672598046::0::1::::<><>::uid://2iccpj7018ab<>res://Levels/levels.gd<>uid://jq2jsd8ggp4y<>uid://dl4i10kek1iq4
-level_2.tscn::PackedScene::8302602735635379083::1672598043::0::1::::<><>::res://Levels/levels.gd<>uid://2iccpj7018ab<>uid://dl4i10kek1iq4<>uid://jq2jsd8ggp4y
-level_3.tscn::PackedScene::8047447755581264812::1672598043::0::1::::<><>::res://Levels/levels.gd<>uid://2iccpj7018ab<>uid://dl4i10kek1iq4<>uid://jq2jsd8ggp4y
-level_base.tscn::PackedScene::2029981904209443165::1672598042::0::1::::<><>::res://Levels/levels.gd<>uid://2iccpj7018ab<>uid://dl4i10kek1iq4<>uid://jq2jsd8ggp4y
-::res://Main Characters/::1672456397
-player.gd::GDScript::-1::1672456397::0::1::::<>CharacterBody2D<>::
-player.tscn::PackedScene::666386019319443486::1672449353::0::1::::<><>::res://Main Characters/player.gd<>uid://d3n4litxggqok
+level_1.tscn::PackedScene::5784049291230266016::1672680791::0::1::::<><>::uid://2iccpj7018ab<>res://Levels/levels.gd<>uid://jq2jsd8ggp4y<>uid://dl4i10kek1iq4
+level_2.tscn::PackedScene::8302602735635379083::1672680791::0::1::::<><>::res://Levels/levels.gd<>uid://2iccpj7018ab<>uid://dl4i10kek1iq4<>uid://jq2jsd8ggp4y
+level_3.tscn::PackedScene::8047447755581264812::1672680792::0::1::::<><>::res://Levels/levels.gd<>uid://2iccpj7018ab<>uid://dl4i10kek1iq4<>uid://jq2jsd8ggp4y
+level_base.tscn::PackedScene::2029981904209443165::1672680792::0::1::::<><>::res://Levels/levels.gd<>uid://2iccpj7018ab<>uid://dl4i10kek1iq4<>uid://jq2jsd8ggp4y
+::res://Main Characters/::1672680891
+player.gd::GDScript::-1::1672680891::0::1::::<>CharacterBody2D<>::
+player.tscn::PackedScene::666386019319443486::1672680792::0::1::::<><>::res://Main Characters/player.gd<>uid://d3n4litxggqok
 ::res://Main Characters/General/::1672350464
 Appearing (96x96).png::CompressedTexture2D::17636194504750294::1566171324::1672350464::1::::<><>::
 Desappearing (96x96).png::CompressedTexture2D::6022477583524756234::1566171332::1672350464::1::::<><>::
@@ -200,8 +202,8 @@ Idle (32x32).png::CompressedTexture2D::9075227903029502742::1566491822::16723522
 Jump (32x32).png::CompressedTexture2D::1047431114952305812::1565225998::1672352213::1::::<><>::
 Run (32x32).png::CompressedTexture2D::4922329414027691322::1566491830::1672352213::1::::<><>::
 Wall Jump (32x32).png::CompressedTexture2D::2462896621768269951::1566491848::1672352213::1::::<><>::
-::res://Main Characters/Pink Man/::1672597850
-pink_man.tres::SpriteFrames::9153167470861540950::1672597850::0::1::::<><>::uid://isp3f373sha<>uid://cr2llc0nqd4ty<>uid://s8w5ib5gakeh<>uid://dmqk4tksqmvv4<>uid://dlga1x5748x77<>uid://cs4w34fsr1o4x<>uid://q8eukin320x5<>uid://0r3owp21v3n7<>uid://wnfgorslmb7x
+::res://Main Characters/Pink Man/::1672677819
+pink_man.tres::SpriteFrames::9153167470861540950::1672677819::0::1::::<><>::uid://isp3f373sha<>uid://cr2llc0nqd4ty<>uid://s8w5ib5gakeh<>uid://dmqk4tksqmvv4<>uid://dlga1x5748x77<>uid://cs4w34fsr1o4x<>uid://q8eukin320x5<>uid://0r3owp21v3n7<>uid://wnfgorslmb7x
 ::res://Main Characters/Pink Man/Assets/::1672352238
 Double Jump (32x32).png::CompressedTexture2D::1332913422129262615::1566491898::1672352238::1::::<><>::
 Fall (32x32).png::CompressedTexture2D::8035218190982967387::1565226090::1672352238::1::::<><>::
@@ -292,9 +294,9 @@ Confetti (16x16).png::CompressedTexture2D::1157084575490205355::1566142324::1672
 Dust Particle.png::CompressedTexture2D::1871810450104476233::1566046754::1672339252::1::::<><>::
 Shadow.png::CompressedTexture2D::3006535456421761148::1569872600::1672339252::1::::<><>::
 Transition.png::CompressedTexture2D::2281004618503911921::1566218002::1672339252::1::::<><>::
-::res://Terrain/::1672597926
+::res://Terrain/::1672677819
 Terrain (16x16).png::CompressedTexture2D::2295680111073199024::1569851692::1672339252::1::::<><>::
-terrain.tres::TileSet::1911739609074589221::1672597926::0::1::::<><>::uid://7ybrsr5smkw3
+terrain.tres::TileSet::1911739609074589221::1672677819::0::1::::<><>::uid://7ybrsr5smkw3
 ::res://Traps/::1569851786
 ::res://Traps/Arrow/::1672339252
 Hit (18x18).png::CompressedTexture2D::2390561485907053738::1569283834::1672339252::1::::<><>::
