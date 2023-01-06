@@ -52,4 +52,5 @@ jump={
 
 [rendering]
 
+renderer/rendering_method="mobile"
 textures/canvas_textures/default_texture_filter=0
