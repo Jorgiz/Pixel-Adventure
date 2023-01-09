@@ -1,7 +1,9 @@
 res://main.tscn
-res://Terrain/terrain.tres
 res://Main Characters/Pink Man/pink_man.tres
+res://Terrain/terrain.tres
 res://Main Characters/player.tscn
 res://Enemies/Mushroom/mushroom.tscn
 res://Levels/level_1.tscn
 res://Items/Checkpoints/End/next_level.tscn
+res://Traps/Falling Platforms/falling_platform.tscn
+res://Traps/Falling Platforms/falling_platform.gd

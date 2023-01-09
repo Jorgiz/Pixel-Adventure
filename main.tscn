@@ -1,9 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://b48at344qttyb"]
+[gd_scene load_steps=6 format=3 uid="uid://b48at344qttyb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_fri7y"]
-[ext_resource type="PackedScene" uid="uid://con3pgpyaevg7" path="res://Levels/level_1.tscn" id="2_herep"]
+[ext_resource type="PackedScene" uid="uid://jq2jsd8ggp4y" path="res://Main Characters/player.tscn" id="2_c1p32"]
+[ext_resource type="PackedScene" uid="uid://lb3kud4tp15k" path="res://Traps/Falling Platforms/falling_platform.tscn" id="3_i7wpd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ld4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg44w"]
+size = Vector2(96, 16)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fri7y")
 
-[node name="Level_1" parent="." instance=ExtResource("2_herep")]
+[node name="Player" parent="." instance=ExtResource("2_c1p32")]
+position = Vector2(176, 120)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(160, 160)
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+scale = Vector2(96, 16)
+mesh = SubResource("QuadMesh_0ld4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_dg44w")
+
+[node name="FallingPlatform" parent="." instance=ExtResource("3_i7wpd")]
+position = Vector2(128, 128)

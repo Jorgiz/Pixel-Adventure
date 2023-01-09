@@ -1,0 +1,156 @@
+[gd_scene load_steps=15 format=3 uid="uid://lb3kud4tp15k"]
+
+[ext_resource type="Texture2D" uid="uid://pwsbhgokv25g" path="res://Traps/Falling Platforms/Assets/Off.png" id="1_4h2fg"]
+[ext_resource type="Script" path="res://Traps/Falling Platforms/falling_platform.gd" id="1_pi3mq"]
+[ext_resource type="Texture2D" uid="uid://dog5n6rqq2vih" path="res://Traps/Falling Platforms/Assets/On (32x10).png" id="2_w66bj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j464n"]
+atlas = ExtResource("2_w66bj")
+region = Rect2(0, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnpyr"]
+atlas = ExtResource("2_w66bj")
+region = Rect2(32, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ge1k"]
+atlas = ExtResource("2_w66bj")
+region = Rect2(64, 0, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qer6p"]
+atlas = ExtResource("2_w66bj")
+region = Rect2(96, 0, 32, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbfsm"]
+animations = [{
+"frames": [ExtResource("1_4h2fg")],
+"loop": false,
+"name": &"Off",
+"speed": 1.0
+}, {
+"frames": [SubResource("AtlasTexture_j464n"), SubResource("AtlasTexture_cnpyr"), SubResource("AtlasTexture_3ge1k"), SubResource("AtlasTexture_qer6p")],
+"loop": true,
+"name": &"On",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hch3m"]
+size = Vector2(30, 3)
+
+[sub_resource type="Animation" id="Animation_5xwju"]
+resource_name = "On"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"On"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kj40v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wr3p3"]
+resource_name = "Warning"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(6, 0), Vector2(-5, 0), Vector2(6, 0), Vector2(-5, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"On"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vo60c"]
+_data = {
+"On": SubResource("Animation_5xwju"),
+"RESET": SubResource("Animation_kj40v"),
+"Warning": SubResource("Animation_wr3p3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egulk"]
+size = Vector2(32, 2)
+
+[node name="FallingPlatform" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_pi3mq")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+frames = SubResource("SpriteFrames_qbfsm")
+animation = &"On"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_hch3m")
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "On"
+libraries = {
+"": SubResource("AnimationLibrary_vo60c")
+}
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_egulk")
+debug_color = Color(0.301961, 0.627451, 0, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
